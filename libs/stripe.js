@@ -34,16 +34,15 @@ export const createCheckout = async ({
       line_items: [
         {
           price: priceId,
-          quantity: 1,
+          quantity: 10,
+          adjustable_quantity: {
+            enabled: true, // Enable adjustable quantity
+            maximum: 10000, // Set maximum quantity
+            minimum: 10, // Set minimum quantity
+          },
         },
+        
       ],
-      discounts: couponId
-        ? [
-            {
-              coupon: couponId,
-            },
-          ]
-        : [],
       success_url: successUrl,
       cancel_url: cancelUrl,
     });

@@ -2,7 +2,7 @@ import { getServerSession } from "next-auth/next";
 import { authOptions } from "../auth/[...nextauth]";
 import { createCheckout } from "@/libs/stripe";
 import connectMongo from "@/libs/mongoose";
-import User from "@/models/User";
+import User from "@/models/user";
 
 export default async function handler(req, res) {
   const session = await getServerSession(req, res, authOptions);
@@ -15,6 +15,7 @@ export default async function handler(req, res) {
 
     switch (method) {
       case "POST": {
+        
         if (!body.priceId) {
           return res.status(404).send({ error: "Need a Price ID for Stripe" });
         } else if (!body.successUrl || !body.cancelUrl) {
@@ -36,8 +37,7 @@ export default async function handler(req, res) {
             successUrl,
             cancelUrl,
             clientReferenceID: user._id.toString(),
-            priceId: body.priceId,
-            coupon,
+            priceId: body.priceId
           });
           return res.status(200).json({ url: stripeSessionURL });
         } catch (e) {
@@ -54,3 +54,4 @@ export default async function handler(req, res) {
     res.status(401).end();
   }
 }
+

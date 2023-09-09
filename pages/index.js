@@ -1,37 +1,41 @@
-import Link from "next/link";
-
 import TagSEO from "@/components/TagSEO";
 import TagSchema from "@/components/TagSchema";
+import { Nav } from "@/components/Nav";
+import ButtonGradient from "@/components/ButtonGradient";
 
 export default function Home() {
   return (
     <>
       <TagSEO canonicalSlug="" />
       <TagSchema />
+    <Nav />
+    <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 relative z-20">
+    <div className="items-center flex justify-center max">
+  <div className="w-full mx-auto py-24 text-center">
+    <h1 className="text-2xl leading-[1.6rem] font-bold tracking-tight text-primary-500 sm:text-4xl sm:leading-[3rem] lg:text-[38px]">Turn QR Codes into Art,<br/> with our AI QR-generator</h1>
 
-      <main className="flex min-h-screen flex-col items-center justify-center text-center gap-12 p-8">
-        <h1 className="text-3xl font-bold">Ship Fast ⚡️</h1>
-
-        <p className="text-lg opacity-80">
-          The start of your new startup... What are you gonna build?
-        </p>
-
-        <Link className="btn" href="/tutorial">
-          Show me how it works{" "}
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-            className="w-5 h-5"
-          >
-            <path
-              fillRule="evenodd"
-              d="M5 10a.75.75 0 01.75-.75h6.638L10.23 7.29a.75.75 0 111.04-1.08l3.5 3.25a.75.75 0 010 1.08l-3.5 3.25a.75.75 0 11-1.04-1.08l2.158-1.96H5.75A.75.75 0 015 10z"
-              clipRule="evenodd"
-            />
-          </svg>
-        </Link>
-      </main>
+     <h2 className="text-xl text-accent font-semibold mt-3"> The #1 AI QR-code generator</h2> 
+     <p className="text-lg mt-3">Generate artistic QR codes in seconds with our AI QR Art generator.<br/>
+     Choose style & receive your unique QR-code.</p>
+    <div className="mt-3">
+      <div className="mt-5">
+        <div className="content-center items-center gap-6 flex justify-center">
+            <ButtonGradient/>
+        </div>
+      </div>
+      <div className="items-center flex mt-5">
+        
+        <p className="text-stone-00 text-sm mx-auto">
+          <strong className="font-bold">1,236 </strong> QR-codes already created
+        </p>{" "}
+       
+      </div>{" "}
+      
+    </div>
+  </div>
+</div>
+</div>
+ 
     </>
   );
 }
