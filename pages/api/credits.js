@@ -1,5 +1,5 @@
 import connectMongo from "@/libs/mongoose";
-import User from "@/models/user";
+import User from "@/models/User";
 import { getSession } from "next-auth/react";
 
 export default async function handler(req, res) {

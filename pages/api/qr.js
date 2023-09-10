@@ -6,7 +6,7 @@ import QR from "@/models/qr";
 // Import mongoose ObjectId
 import { Types } from 'mongoose';
 import { getSession } from "next-auth/react";
-import User from "@/models/user"; // Import the User model
+import User from "@/models/User"; // Import the User model
 
 // Create a new instance of Replicate with the API token from the environment variables
 const replicate = new Replicate({

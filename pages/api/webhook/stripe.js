@@ -3,7 +3,7 @@ import { buffer } from "micro";
 import connectMongo from "@/libs/mongoose";
 import { sendEmail } from "@/libs/mailgun";
 import configFile from "@/config";
-import User from "@/models/user";
+import User from "@/models/User";
 import { findCheckoutSession } from "@/libs/stripe";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
