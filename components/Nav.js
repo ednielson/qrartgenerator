@@ -1,6 +1,8 @@
 import React from 'react'
 import ButtonGradient from './ButtonGradient'
 import ButtonCheckout from './ButtonCheckout'
+import Image from 'next/image'
+import Link from 'next/link'
 
 export const Nav = () => {
   return (
@@ -22,9 +24,9 @@ export const Nav = () => {
         <li><ButtonCheckout/></li>
       </ul>
     </div>
-    <a href="/">
-      <img src="/logoAndName.png" alt="Logo" className="h-10 w-auto" />
-    </a>
+    <Link href="/" >
+      <Image src="/logoAndName.png" alt="Logo" className="h-10 w-auto" width={100} height={100} />
+      </Link>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">

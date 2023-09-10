@@ -1,5 +1,6 @@
 import Image from "next/image";
 import TestimonialsAvatars from "./TestimonialsAvatars";
+import Link from 'next/link';
 
 const Hero = () => {
   return (
@@ -17,7 +18,9 @@ const Hero = () => {
           Generate beautiful QR codes in seconds with our AI QR Art generator.
           Pick a style & download your unique QR-code.
         </p>
-        <a href="/create-qr" className="btn btn-primary btn-wide">Generate QR</a>
+        <Link href="/create-qr" className="btn btn-primary btn-wide">
+          Generate QR
+        </Link>
 
 
         <TestimonialsAvatars priority={true} />

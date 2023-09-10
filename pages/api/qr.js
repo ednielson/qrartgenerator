@@ -82,4 +82,4 @@ export default async function handler(req, res) {
     // If there's an error, return a 500 status with the error message
     res.status(500).json({ success: false, error: error.message });
   }
-};
+}
