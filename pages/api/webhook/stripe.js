@@ -2,7 +2,7 @@ import Stripe from "stripe";
 import { buffer } from "micro";
 import connectMongo from "@/libs/mongoose";
 import { sendEmail } from "@/libs/mailgun";
-import configFile from "@/config";
+import config from "@/config";
 import User from "@/models/User";
 import { findCheckoutSession } from "@/libs/stripe";
 
