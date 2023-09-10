@@ -1,8 +1,9 @@
 import React from 'react';
 import apiClient from "@/libs/api";
 
-const ButtonCheckout = () => {
-  const  createStripeCheckout = async () => {
+const ButtonCheckoutCTA = () => {
+  const createStripeCheckout = async (event) => {
+    event.stopPropagation(); // Add this line
     try {
       const response = await apiClient.post(`/stripe/create-checkout`, {
         priceId: 'price_1NZayPJ5RILbu7KLK2kvKRXg', // replace with your actual priceId
@@ -17,10 +18,10 @@ const ButtonCheckout = () => {
   };
   
   return (
-    <button onClick={createStripeCheckout}>
-      Buy credits
-    </button>
+    <button type="button" onClick={createStripeCheckout} className='btn btn-primary mt-3 '>
+    Buy credits
+  </button>
   );
 };
 
-export default ButtonCheckout;
+export default ButtonCheckoutCTA;

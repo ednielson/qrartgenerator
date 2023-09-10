@@ -6,6 +6,7 @@ import QR from "@/models/qr";
 // Import mongoose ObjectId
 import { Types } from 'mongoose';
 import { getSession } from "next-auth/react";
+import User from "@/models/user"; // Import the User model
 
 // Create a new instance of Replicate with the API token from the environment variables
 const replicate = new Replicate({
@@ -15,6 +16,23 @@ const replicate = new Replicate({
 // Export the default async function handler
 export default async function handler(req, res) {
   try {
+    // Get the session
+    const session = await getSession({ req });
+
+    // Fetch the user from the database
+    const user = await User.findById(session?.user?.id);
+
+    // Check if the user has enough credits
+    if (user.credits < 1) {
+      return res.status(400).json({ success: false, error: "Not enough credits" });
+    }
+
+   // Deduct 1 credit from the user
+    await User.updateOne(
+      { _id: session?.user?.id },
+      { $inc: { credits: -1 } }
+    );
+
     // Extract the url and style from the query parameters
     const { url, style } = req.query;
 
@@ -46,9 +64,6 @@ export default async function handler(req, res) {
       }
     );
 
-    // Get the session
-    const session = await getSession({ req });
-
     // Create a new QR document
     const qr = new QR({
       input_url: url,
@@ -59,15 +74,10 @@ export default async function handler(req, res) {
 
     // Save the QR document to the database
     await qr.save();
-    
-
-    // If the function runs successfully, return a 201 status with a success message
 
     // Redirect user to /dashboard
     res.writeHead(302, { Location: '/dashboard' });
     res.end();
-    
-
   } catch (error) {
     // If there's an error, return a 500 status with the error message
     res.status(500).json({ success: false, error: error.message });

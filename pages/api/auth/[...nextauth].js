@@ -17,10 +17,11 @@ export const authOptions = {
       async profile(profile) {
         return {
           id: profile.sub,
-          name: profile.given_name ? profile.given_name : profile.name,
           email: profile.email,
           image: profile.picture,
           createdAt: new Date(),
+          username: profile.email, // replace with actual value
+          credits: 3 // replace with actual value
         };
       },
     }),

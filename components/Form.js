@@ -1,10 +1,14 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
+import ButtonCheckoutCTA from './ButtonCheckoutCTA';
+
 
 export default function Form() {
   const [url, setUrl] = useState('');
   const [styles, setStyles] = useState([]);
   const [selectedStyle, setSelectedStyle] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [credits, setCredits] = useState(null);
   const router = useRouter();
 
   useEffect(() => {
@@ -12,21 +16,45 @@ export default function Form() {
       const response = await fetch('/api/styles');
       const data = await response.json();
       setStyles(data);
+      setLoading(false);
     };
 
     fetchStyles();
   }, []);
 
+  useEffect(() => {
+    const fetchCredits = async () => {
+      try {
+        const response = await fetch('/api/credits');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        setCredits(data.credits);
+      } catch (error) {
+        console.error('There has been a problem with your fetch operation: ', error);
+      }
+    };
+
+    fetchCredits();
+  }, []);
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    // If no style is selected, use the first one as default
     const styleToUse = selectedStyle ? selectedStyle : styles[0]._id;
     router.push(`/api/qr?style=${styleToUse}&url=${url}`);
   };
 
+
+  if (loading) {
+    return <span className="loading loading-dots loading-lg"></span>;
+  }
+
   return (
     <form onSubmit={handleSubmit}>
-     
+      <p className='text-m'>Credits left: <b>{credits}</b></p>
+      {credits === 0 &&  <ButtonCheckoutCTA/>
+      }
       <div className="form-control w-full max-w-xs">
             <label className="label  mt-6">
               <span className="text-m font-semibold">QR-code URL</span>
@@ -50,9 +78,10 @@ export default function Form() {
           ))}
         </div>
         
-     <button className="btn btn-active btn-primary btn-lg mt-6" type="submit">Generate</button>
+     <button className="btn btn-active btn-primary btn-lg mt-6" type="submit" disabled={credits === 0}>Generate</button>
 
     </form>
   );
 }
+
 

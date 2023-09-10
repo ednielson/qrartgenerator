@@ -1,44 +1,25 @@
-import mongoose from "mongoose";
-import toJSON from "./plugins/toJSON";
+import { Schema, model, models } from 'mongoose';
 
-// USER SCHEMA
-const userSchema = mongoose.Schema(
-  {
-    name: {
-      type: String,
-      trim: true,
-    },
-    email: {
-      type: String,
-      trim: true,
-      lowercase: true,
-      private: true,
-    },
-    image: {
-      type: String,
-    },
-    // Used in the Stripe webhook to identify the user in Stripe and later create Customer Portal or prefill user credit card details
-    customerId: {
-      type: String,
-      validate(value) {
-        return value.includes("cus_");
-      },
-    },
-    // Used in the Stripe webhook. should match a plan in config.js file.
-    priceId: {
-      type: String,
-      validate(value) {
-        return value.includes("price_");
-      },
-    },
+const UserSchema = new Schema({
+  email: {
+    type: String,
+    unique: [true, 'Email already exists!'],
+    required: [true, 'Email is required!'],
   },
-  {
-    timestamps: true,
-    toJSON: { virtuals: true },
+  username: {
+    type: String,
+    required: [true, 'Username is required!'],
+    match: [/^(?=.{8,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/, "Username invalid, it should contain 8-20 alphanumeric letters and be unique!"]
+  },
+  image: {
+    type: String,
+  },
+  credits: {
+    type: Number,
+    default: '3'
   }
-);
+});
 
-// add plugin that converts mongoose to json
-userSchema.plugin(toJSON);
+const User = models.User || model("User", UserSchema);
 
-export default mongoose.models.User || mongoose.model("User", userSchema);
+export default User;

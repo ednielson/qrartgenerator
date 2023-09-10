@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import user from "@/models/user";
+import User from "@/models/user";
 
 const connectMongo = async () =>
   mongoose

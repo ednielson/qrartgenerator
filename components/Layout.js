@@ -1,6 +1,5 @@
 import "react-tooltip/dist/react-tooltip.css";
 import { useEffect, useState } from "react";
-import { Inter } from "next/font/google";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import NextNProgress from "nextjs-progressbar";
@@ -9,9 +8,9 @@ import { Crisp } from "crisp-sdk-web";
 import { Tooltip } from "react-tooltip";
 import ErrorBoundary from "./ErrorBoundary";
 import config from "@/config";
+import { Plus_Jakarta_Sans } from "next/font/google";
 
-const font = Inter({ subsets: ["latin"] });
-
+const font = Plus_Jakarta_Sans({ subsets: ["latin"] });
 export default function Layout({ children }) {
   const router = useRouter();
   const { data } = useSession();

@@ -3,7 +3,7 @@ import { buffer } from "micro";
 import connectMongo from "@/libs/mongoose";
 import { sendEmail } from "@/libs/mailgun";
 import configFile from "@/config";
-import User from "@/models/User";
+import User from "@/models/user";
 import { findCheckoutSession } from "@/libs/stripe";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
@@ -52,15 +52,15 @@ export default async function handler(req, res) {
             // First payment is successful and the subscription is created | or the subscription was canceled so create new one
 
             const session = await findCheckoutSession(data.object.id);
-
+            const quantity = session?.line_items?.data[0]?.quantity;
             const customerId = session?.customer;
             const priceId = session?.line_items?.data[0]?.price.id;
             const userId = data.object.client_reference_id;
-            const plan = configFile.stripe.plans.find(
-              (p) => p.priceId === priceId
-            );
+           // const plan = configFile.stripe.plans.find(
+           //   (p) => p.priceId === priceId
+           // );
 
-            if (!plan) break;
+           // if (!plan) break;
 
             const customer = await stripe.customers.retrieve(customerId);
 
@@ -86,8 +86,9 @@ export default async function handler(req, res) {
             }
 
             // update user data (for instance add credits)
-            user.priceId = priceId;
-            user.customerId = customerId;
+           // user.priceId = priceId;
+           // user.customerId = customerId;
+            user.credits += quantity;
             await user.save();
 
             // Extra: send email with user link, product page, etc...

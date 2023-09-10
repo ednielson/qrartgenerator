@@ -1,6 +1,6 @@
 import React from "react";
 
-const ButtonGradient = ({ title = "Gradient Button", onClick = () => {} }) => {
+const ButtonGradient = ({ title = "Generate QR", onClick = () => window.location.href='/create-qr' }) => {
   return (
     <button className="btn btn-gradient animate-shimmer" onClick={onClick}>
       {title}
