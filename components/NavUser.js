@@ -1,6 +1,8 @@
 import React from 'react'
 import ButtonGradient from './ButtonGradient'
 import ButtonCheckout from './ButtonCheckout'
+import Image from 'next/image'
+import Link from 'next/link'
 
 export const Nav = () => {
   return (
