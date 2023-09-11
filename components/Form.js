@@ -59,7 +59,7 @@ export default function Form() {
             <label className="label  mt-6">
               <span className="text-m font-semibold">QR-code URL</span>
             </label>
-            <input type="text" placeholder="https://yoururl.com" className="input input-bordered w-full max-w-xs" value={url} onChange={(e) => setUrl(e.target.value)}  />
+            <input type="url" placeholder="https://yoururl.com" className="input input-bordered w-full max-w-xs" value={url} onChange={(e) => setUrl(e.target.value)} required pattern="https?://.+" title="Include 'http://' or 'https://' in your URL." />
             <label className="label">
               <span className="label-text-alt">The URL your QR-code opens when scanned</span>
             </label>
@@ -78,7 +78,7 @@ export default function Form() {
           ))}
         </div>
         
-     <button className="btn btn-active btn-primary btn-lg mt-6" type="submit" disabled={credits === 0}>Generate</button>
+     <button className="btn btn-active btn-primary btn-lg mt-6" type="submit" disabled={credits === 0 || !selectedStyle}>Generate</button>
 
     </form>
   );

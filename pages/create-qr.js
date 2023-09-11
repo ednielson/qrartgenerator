@@ -3,7 +3,6 @@ import TagSEO from "@/components/TagSEO";
 import { Nav } from "@/components/Nav";
 import Form from "@/components/Form";
 import { usePrivate } from "@/hooks/usePrivate";
-import { signOut } from "next-auth/react";
 
 export default function Dashboard() {
   const [session, status] = usePrivate({
@@ -31,12 +30,7 @@ export default function Dashboard() {
     </>
         </section>
 
-        <button
-              className="btn btn-ghost"
-              onClick={() => signOut({ callbackUrl: "/" })}
-            >
-              Logout
-            </button>
+        
       </main>
     </>
   );
