@@ -5,7 +5,7 @@ const ButtonCheckout = () => {
   const  createStripeCheckout = async () => {
     try {
       const response = await apiClient.post(`/stripe/create-checkout`, {
-        priceId: 'price_1NZayPJ5RILbu7KLK2kvKRXg', // replace with your actual priceId
+        priceId: 'price_1NpBpJJ5RILbu7KLxMwCiohG', // replace with your actual priceId
         successUrl: 'http://localhost:3000/success', // replace with your actual successUrl
         cancelUrl: 'http://localhost:3000/cancel' // replace with your actual cancelUrl
       });

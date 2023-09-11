@@ -25,7 +25,7 @@ const config = {
   },
   aws: {
     // If you use AWS S3/Cloudfront, put values in here
-    cdn: "https://cdn-id.cloudfront.net/",
+    cdn: "",
   },
   mailgun: {
     // subdomain to use when sending emails, if you don't have a subdomain, just remove it. Highly recommended to have one (i.e. mg.yourdomain.com or mail.yourdomain.com)
@@ -37,7 +37,7 @@ const config = {
     // Email shown to customer if need support. Leave empty if not needed => if empty, set up Crisp above, otherwise you won't be able to offer customer support."
     supportEmail: "QRart <hello@mail.qrart.ai",
     // When someone replies to supportEmail sent by the app, forward it to the email below (otherwise it's lost). If you set supportEmail to empty, this will be ignored.
-    forwardRepliesTo: "hello@qrart.ai",
+    forwardRepliesTo: "niels@freelanceit.be",
   },
   colors: {
     // REQUIRED — The DaisyUI theme to use (added to _document.js). Leave blank for default (light & dark mode). If you any other theme than light/dark, you need to add it in config.tailwind.js in daisyui.themes.

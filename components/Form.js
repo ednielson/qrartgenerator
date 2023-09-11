@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import ButtonCheckoutCTA from './ButtonCheckoutCTA';
-
+import Image from 'next/image';
 
 export default function Form() {
   const [url, setUrl] = useState('');
@@ -73,7 +73,7 @@ export default function Form() {
         <div className="xs:grid-cols-2 sm:grid-cols-3 md:grid grid-cols-4 lg:grid-cols-8 gap-1 mt-3">
           {styles.map((style) => (
             <div key={style._id} className={`style-item ${selectedStyle === style._id ? 'border-4 border-error' : ''}`} onClick={() => setSelectedStyle(style._id)}>
-              <img src={style.imagePath} alt={style.name} style={{ cursor: 'pointer' }} />
+              <Image src={style.imagePath} alt={style.name} width={300} height={300} style={{ cursor: 'pointer' }} />
             </div>
           ))}
         </div>
