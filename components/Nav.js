@@ -21,7 +21,7 @@ export const Nav = () => {
       </label>
       <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
       <li><Link href="/create-qr">Generator</Link></li>
-      <li><Link href="/dashboard">My QR's</Link></li>
+      <li><Link href="/dashboard">My QR&apos;s</Link></li>
       <li><a><ButtonCheckout/></a></li>
       <li><a><ButtonLogout/></a></li>
       </ul>
@@ -36,7 +36,7 @@ export const Nav = () => {
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
      <li><Link href="/create-qr">Generator</Link></li>
-      <li><Link href="/dashboard">My QR's</Link></li>
+      <li><Link href="/dashboard">My QR&apos;s</Link></li>
       <li><a><ButtonCheckout/></a></li>
       <li><a><ButtonLogout/></a></li>
     </ul>
