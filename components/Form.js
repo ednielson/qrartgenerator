@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import ButtonCheckoutCTA from './ButtonCheckoutCTA';
 import Image from 'next/image';
+import { useSession } from 'next-auth/react';
 
 export default function Form() {
   const [url, setUrl] = useState('');
@@ -10,6 +11,7 @@ export default function Form() {
   const [loading, setLoading] = useState(true);
   const [credits, setCredits] = useState(null);
   const router = useRouter();
+  const { data: session } = useSession();
 
   useEffect(() => {
     const fetchStyles = async () => {
@@ -42,7 +44,7 @@ export default function Form() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const styleToUse = selectedStyle ? selectedStyle : styles[0]._id;
-    router.push(`/api/qr?style=${styleToUse}&url=${url}`);
+    router.push(`/api/qr?style=${styleToUse}&url=${url}&userId=${session.user.id}`);
   };
 
 
