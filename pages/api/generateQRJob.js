@@ -4,15 +4,35 @@ import QRStyle from "../../models/QRStyle";
 import QR from "@/models/qr";
 import { Types } from 'mongoose';
 import Replicate from "replicate";
+import fetch from 'node-fetch';
 
 const replicate = new Replicate({
   auth: process.env.REPLICATE_API_TOKEN,
 });
 
+async function shortenUrl(input_url) {
+  const data = {
+    "domain": "l.qrart.ai",
+    "originalURL": input_url
+  };
+
+  const response = await fetch('https://api.short.io/links/public', {
+    method: 'post',
+    headers: {
+      'accept': 'application/json',
+      'Content-Type': 'application/json',
+      'authorization': 'pk_wmXVSwBDKlH0VGcx'
+    },
+    body: JSON.stringify(data)
+  });
+
+  const responseData = await response.json();
+  return responseData.shortURL;
+}
+
 const qrJob = async (jobData) => {
   try {
     const { userId, url, style } = jobData;
-
 
     // Check if style is a valid ObjectId
     if (!Types.ObjectId.isValid(style)) {
@@ -27,11 +47,13 @@ const qrJob = async (jobData) => {
       return;
     }
 
+    const shortUrl = await shortenUrl(url);
+
     const output_uri = await replicate.run(
       "dannypostma/cog-visual-qr:7653601d0571fa6342ba4fa93a0962adebd1169e9e2329eefeb5729cac645d42",
       {
         input: {
-          qr_code_content: url,
+          qr_code_content: shortUrl,
           prompt: qrStyle.prompt,
           strength: qrStyle.strength,
           controlnet_conditioning_scale: qrStyle.controlnet_conditioning_scale,

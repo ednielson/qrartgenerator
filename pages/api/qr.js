@@ -38,7 +38,8 @@ export default async function handler(req, res) {
       style: style 
     });
 
-    res.status(202).json({ success: true, message: "QR generation in progress." });
+    // Redirect to the dashboard
+    res.redirect('/dashboard?from=create-qr');
 
   } catch (error) {
     res.status(500).json({ success: false, error: error.message });
