@@ -8,7 +8,7 @@ import config from "@/config";
 // 2. Copy paste bellow
 // 3. Replace the data with your own (if needed)
 
-// You are an excellent layer.
+// You are an excellent lawyer.
 
 // I need your help to write a simple privacy policy for my website. Here is some context:
 // - Website: https://shipfa.st
@@ -45,57 +45,45 @@ const PrivacyPolicy = () => {
           </svg>{" "}
           Back
         </Link>
-        <h1 className="text-3xl font-bold pb-6">Privacy Policy for ShipFast</h1>
+        <h1 className="text-3xl font-bold pb-6">Privacy Policy for QRart.ai</h1>
 
         <pre
           className="leading-relaxed whitespace-pre-wrap"
           style={{ fontFamily: "sans-serif" }}
         >
-          {`Last Updated: 2023-08-25
+          {`Introduction
+Welcome to the privacy policy of QRart ("we," "us," or "our"). Our website, https://qrart.ai, offers a platform for generating beautiful QR codes through our AI QR Art generator ("Service").
 
-Thank you for visiting ShipFast ("we," "us," or "our"). This Privacy Policy outlines how we collect, use, and protect your personal and non-personal information when you use our website located at https://shipfa.st (the "Website").
+By using our Service, you agree to the collection and use of information in accordance with this privacy policy.
 
-By accessing or using the Website, you agree to the terms of this Privacy Policy. If you do not agree with the practices described in this policy, please do not use the Website.
+Personal Data Collected
+We collect the following types of personal data from you:
 
-1. Information We Collect
+Name
+Email address
+Payment information
 
-1.1 Personal Data
+Non-Personal Data Collected
+We also collect web cookies to improve your user experience.
 
-We collect the following personal information from you:
+Purpose of Data Collection
+The data we collect is solely used for the purpose of order processing.
 
-Name: We collect your name to personalize your experience and communicate with you effectively.
-Email: We collect your email address to send you important information regarding your orders, updates, and communication.
-Payment Information: We collect payment details to process your orders securely. However, we do not store your payment information on our servers. Payments are processed by trusted third-party payment processors.
+Data Sharing
+We do not share your personal or non-personal data with any third parties.
 
-1.2 Non-Personal Data
+Children's Privacy
+Our Service does not address anyone under the age of 13. We do not knowingly collect personal data from children under 13 years of age.
 
-We may use web cookies and similar technologies to collect non-personal information such as your IP address, browser type, device information, and browsing patterns. This information helps us to enhance your browsing experience, analyze trends, and improve our services.
+Updates to This Privacy Policy
+We may update our Privacy Policy from time to time. We will notify you of any changes by sending an email to the email address you have provided us.
 
-2. Purpose of Data Collection
+Contact Us
+For any questions about this Privacy Policy, you can contact us at:
 
-We collect and use your personal data for the sole purpose of order processing. This includes processing your orders, sending order confirmations, providing customer support, and keeping you updated about the status of your orders.
+Email: hello@qrart.ai
 
-3. Data Sharing
-
-We do not share your personal data with any third parties except as required for order processing (e.g., sharing your information with payment processors). We do not sell, trade, or rent your personal information to others.
-
-4. Children's Privacy
-
-ShipFast is not intended for children under the age of 13. We do not knowingly collect personal information from children. If you are a parent or guardian and believe that your child has provided us with personal information, please contact us at the email address provided below.
-
-5. Updates to the Privacy Policy
-
-We may update this Privacy Policy from time to time to reflect changes in our practices or for other operational, legal, or regulatory reasons. Any updates will be posted on this page, and we may notify you via email about significant changes.
-
-6. Contact Information
-
-If you have any questions, concerns, or requests related to this Privacy Policy, you can contact us at:
-
-Email: marc@shipfa.st
-
-For all other inquiries, please visit our Contact Us page on the Website.
-
-By using ShipFast, you consent to the terms of this Privacy Policy.`}
+This Privacy Policy is effective as of September 22, 2023. Your continued use of our Service after this date signifies your acceptance of this Privacy Policy`}
         </pre>
       </div>
     </div>

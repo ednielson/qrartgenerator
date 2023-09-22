@@ -12,7 +12,7 @@ export default function Dashboard() {
   return (
     <>
       {/* 👇 Add all your SEO tags for the page. canonicalSlug required, other tags a prefilled with your default */}
-      <TagSEO title="Create QR-code | QRart" canonicalSlug="/dashboard" />
+      <TagSEO title="Create QR-code | QRart" canonicalSlug="/create-qr" />
 
         <Nav/>
         

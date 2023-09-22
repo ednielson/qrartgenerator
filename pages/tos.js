@@ -45,47 +45,39 @@ const TOS = () => {
           </svg>
           Back
         </Link>
-        <h1 className="text-3xl font-bold pb-6">Privacy Policy for ShipFast</h1>
+        <h1 className="text-3xl font-bold pb-6">Terms of service for QRart</h1>
 
         <pre
           className="leading-relaxed whitespace-pre-wrap"
           style={{ fontFamily: "sans-serif" }}
         >
-          {`Last Updated: August 25, 2023
+          {`Date: September 22, 2023
 
-This Privacy Policy describes how ShipFast ("we", "us", or "our") collects, uses, and protects the personal and non-personal information you provide on the ShipFast website (https://shipfa.st) and any related services. By accessing or using our website, you consent to the practices described in this policy.
+Acceptance of Terms
+By accessing or using the website https://qrart.ai ("Site"), operated by QRart ("we," "us," or "our"), you agree to comply with and be bound by these Terms of Service ("Terms").
 
-1. Information Collection
+Services
+We provide a platform for generating beautiful QR codes through our AI QR Art generator ("Service").
 
-We collect the following types of information:
+Use of Service
+You agree to use the Service for lawful purposes only and in accordance with these Terms.
 
-Personal Information: When you purchase a package on ShipFast, we collect your name, email address, and payment information. This information is used to process your order, provide customer support, and send important updates related to your purchase.
+Payment
+For paid features, you agree to provide accurate payment information for the completion of the transaction.
 
-Non-Personal Information: We may use web cookies to gather non-personal information such as your IP address, browser type, and referring pages. This helps us improve our website and tailor your experience.
+Termination
+We reserve the right to terminate or suspend access to our Service at our sole discretion, without notice, for conduct that we believe violates these Terms or is harmful to us, other users of the Service, or third parties, or for any other reason.
 
-2. Ownership and Usage Rights
+Limitation of Liability
+Under no circumstances shall we be liable for any direct, indirect, or consequential damages resulting from your use or inability to use the Service.
 
-When you purchase a package from ShipFast, you gain ownership of the code provided in the package. However, you do not have the right to resell or distribute the code as a standalone product. You can request a full refund within 7 days of your purchase if you are not satisfied with the product.
+Changes to Terms
+We reserve the right to change these Terms at any time. Changes will be posted on this page and are effective immediately upon posting.
 
-3. Data Security
+Contact
+For any questions concerning these Terms, contact us at: hello@qrart.ai
 
-We are committed to protecting your personal information. We use appropriate security measures to safeguard your data from unauthorized access, alteration, disclosure, or destruction.
-
-4. Governing Law
-
-This Privacy Policy is governed by the laws of France.
-
-5. Updates to the Privacy Policy
-
-We may update this Privacy Policy from time to time to reflect changes in our practices or for other operational, legal, or regulatory reasons. Changes will be effective as soon as the revised policy is posted on our website. We will notify you of any significant changes via email.
-
-For more details about our data collection, usage, and protection practices, please review our full Privacy Policy at https://shipfa.st/privacy-policy.
-
-If you have any questions or concerns about this Privacy Policy, please contact us at marc@shipfa.st.
-
-Thank you for using ShipFast!
-
-Date: August 25, 2023`}
+These Terms of Service are effective as of September 22, 2023. Your continued use of the Site after this date signifies your acceptance of these Terms.`}
         </pre>
       </div>
     </div>

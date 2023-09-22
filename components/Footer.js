@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import config from "@/config";
 import logo from "@/public/logo.png";
+import ButtonCheckout from "./ButtonCheckout";
 
 // Add the Footer to the bottom of your landing page and more.
 // The support link is connected to the config.js file. If there's no config.mailgun.supportEmail, the link won't be displayed.
@@ -19,19 +20,19 @@ const Footer = () => {
             >
               <Image
                 src={logo}
-                alt="ShipFast logo"
+                alt="QRart logo"
                 priority={true}
                 className="w-6 h-6"
                 width={24}
                 height={24}
               />
               <strong className="font-extrabold tracking-tight text-base md:text-lg">
-                ShipFast
+                QRart
               </strong>
             </Link>
 
             <p className="mt-3 text-sm text-base-content/80">
-              Ship your startup in days, not weeks
+              Fancy QR-codes
             </p>
             <p className="mt-3 text-sm text-base-content/60">
               Copyright © {new Date().getFullYear()} - All rights reserved
@@ -54,12 +55,9 @@ const Footer = () => {
                     Support
                   </a>
                 )}
-                <Link href="/#pricing" className="link link-hover">
-                  Pricing
-                </Link>
-                <a href="/#" target="_blank" className="link link-hover">
-                  Affiliates
-                </a>
+              
+                  <ButtonCheckout className="link link-hover"/>
+           
               </div>
             </div>
 
