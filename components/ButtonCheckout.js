@@ -6,8 +6,8 @@ const ButtonCheckout = () => {
     try {
       const response = await apiClient.post(`/stripe/create-checkout`, {
         priceId: 'price_1NpBpJJ5RILbu7KLxMwCiohG', // replace with your actual priceId
-        successUrl: 'https://qrartgenerator.vercel.app/create-qr', // replace with your actual successUrl
-        cancelUrl: 'https://qrartgenerator.vercel.app/' // replace with your actual cancelUrl
+        successUrl: 'https://qrart.ai/create-qr', // replace with your actual successUrl
+        cancelUrl: 'https://qrart.ai' // replace with your actual cancelUrl
       });
       // Redirect to Stripe checkout
       window.location.href = response.url;
