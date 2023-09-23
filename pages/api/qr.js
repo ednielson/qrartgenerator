@@ -14,16 +14,16 @@ export default async function handler(req, res) {
   try {
     const session = await getSession({ req });
     
-    const user = await User.findById(session?.user?.id);
-
-    if (user.credits < 1) {
+    const user = await User.findOneAndUpdate(
+      { _id: session?.user?.id, credits: { $gte: 1 } },
+      { $inc: { credits: -1 } }
+    );
+    
+    if (!user) {
       return res.status(400).json({ success: false, error: "Not enough credits" });
     }
 
-    await User.updateOne(
-      { _id: session?.user?.id },
-      { $inc: { credits: -1 } }
-    );
+   
 
     const { url, style } = req.query;
 
