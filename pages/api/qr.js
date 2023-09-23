@@ -14,18 +14,21 @@ export default async function handler(req, res) {
   try {
     const session = await getSession({ req });
     
-    const user = await User.findOneAndUpdate(
-      { _id: session?.user?.id, credits: { $gte: 1 } },
-      { $inc: { credits: -1 } },
-      { new: true } // returns the updated user
-    );
-    
-    
+    const user = await User.findById(session?.user?.id);
+
     if (!user) {
+      return res.status(400).json({ success: false, error: "User not found" });
+    }
+
+    if (typeof user.credits !== 'number' || user.credits < 1) {
       return res.status(400).json({ success: false, error: "Not enough credits" });
     }
 
-   
+    await User.findByIdAndUpdate(
+      user._id,
+      { $inc: { credits: -1 } },
+      { new: true } // returns the updated user
+    );
 
     const { url, style } = req.query;
 
