@@ -29,6 +29,7 @@ export const authOptions = {
     EmailProvider({
       server: process.env.EMAIL_SERVER,
       from: config.mailgun.fromNoReply,
+      credits: 3 // replace with actual value
     }),
   ],
   // New users will be saved in Database (MongoDB Atlas). Each user (model) has some fields like name, email, image, etc.. Learn more about the model type: https://next-auth.js.org/v3/adapters/models
