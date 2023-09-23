@@ -16,7 +16,8 @@ export default async function handler(req, res) {
     
     const user = await User.findOneAndUpdate(
       { _id: session?.user?.id, credits: { $gte: 1 } },
-      { $inc: { credits: -1 } }
+      { $inc: { credits: -1 } },
+      { new: true } // returns the updated user
     );
     
     if (!user) {
