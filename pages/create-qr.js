@@ -3,6 +3,7 @@ import TagSEO from "@/components/TagSEO";
 import { Nav } from "@/components/Nav";
 import Form from "@/components/Form";
 import { usePrivate } from "@/hooks/usePrivate";
+import Footer from "@/components/Footer";
 
 export default function Dashboard() {
   const [session, status] = usePrivate({
@@ -32,6 +33,8 @@ export default function Dashboard() {
 
         
       </main>
+
+      <Footer/>
     </>
   );
 }

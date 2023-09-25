@@ -4,6 +4,7 @@ import { usePrivate } from "@/hooks/usePrivate";
 import { useEffect, useState } from "react";
 import { saveAs } from "file-saver";
 import { useRouter } from 'next/router'; // Import useRouter
+import Footer from "@/components/Footer";
 
 export default function Dashboard() {
   const [session, loading] = usePrivate({
@@ -60,6 +61,7 @@ export default function Dashboard() {
           ))}
         </section>
       </main>
+      <Footer/>
     </>
   );
 }

@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import config from "@/config";
 import logo from "@/public/logo.png";
-import ButtonCheckout from "./ButtonCheckout";
+import ButtonSupport from "./ButtonSupport";
 
 // Add the Footer to the bottom of your landing page and more.
 // The support link is connected to the config.js file. If there's no config.mailgun.supportEmail, the link won't be displayed.
@@ -45,18 +45,7 @@ const Footer = () => {
               </div>
 
               <div className="flex flex-col justify-center items-center md:items-start gap-2 mb-10 text-sm">
-                {config.mailgun.supportEmail && (
-                  <a
-                    href={`mailto:${config.mailgun.supportEmail}`}
-                    target="_blank"
-                    className="link link-hover"
-                    aria-label="Contact Support"
-                  >
-                    Support
-                  </a>
-                )}
-              
-                  <ButtonCheckout className="link link-hover"/>
+              <ButtonSupport/>
            
               </div>
             </div>
