@@ -27,6 +27,12 @@ const config = {
     // If you use AWS S3/Cloudfront, put values in here
     cdn: "",
   },
+  crisp: {
+    // Crisp website ID. IF YOU DON'T USE CRISP: just remove this => Then add a support email in this config file (mailgun.supportEmail) otherwise customer support won't work.
+    id: "97bd665f-7643-480c-ba84-8cccfc2b58b9",
+    // Hide Crisp by default, except on route "/". Crisp is toggled with <ButtonSupport/>. If you want to show Crisp on every routes, just remove this below
+    onlyShowOnRoutes: ["/"],
+  },
   mailgun: {
     // subdomain to use when sending emails, if you don't have a subdomain, just remove it. Highly recommended to have one (i.e. mg.yourdomain.com or mail.yourdomain.com)
     subdomain: "mail",
@@ -35,7 +41,7 @@ const config = {
     // REQUIRED — Email 'From' field to be used when sending other emails, like abandoned carts, updates etc..
     fromAdmin: `QRart <hello@qrart.ai>`,
     // Email shown to customer if need support. Leave empty if not needed => if empty, set up Crisp above, otherwise you won't be able to offer customer support."
-    supportEmail: 'QRart <hello@qrart.ai>',
+    supportEmail: '',
     // When someone replies to supportEmail sent by the app, forward it to the email below (otherwise it's lost). If you set supportEmail to empty, this will be ignored.
     forwardRepliesTo: "niels@freelanceit.be",
   },
