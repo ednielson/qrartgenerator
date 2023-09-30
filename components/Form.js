@@ -48,7 +48,7 @@ export default function Form() {
       pathname: '/api/generateQR',
       query: {
         input_url: url,
-        style: styleToUse,
+        styleId: styleToUse,
         creator: session.user.id
       },
     });

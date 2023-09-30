@@ -2,10 +2,12 @@ import connectMongo from "@/libs/mongoose";
 import User from "@/models/User";
 import QR from "@/models/qr";
 import fetch from 'node-fetch';
+import QRStyle from "@/models/QRStyle";
+
 
 export default async function handler(req, res) {
     if (req.method === 'GET') {
-        const { input_url, style, creator } = req.query;
+        const { input_url, styleId, creator } = req.query;
   
         // Connect to MongoDB
         await connectMongo();
@@ -23,11 +25,17 @@ export default async function handler(req, res) {
             { $inc: { credits: -1 } },
             { new: true } // returns the updated user
         );
+
+        // Fetch the style from the database
+            const style = await QRStyle.findById(styleId);
+            if (!style) {
+                return res.status(400).json({ success: false, error: "Style not found" });
+            }
   
         // Create a new document
         const qr = new QR({
             input_url,
-            style,
+            style: style.name,
             creator,
             output_url: '/loading.gif', // Placeholder image
         });
