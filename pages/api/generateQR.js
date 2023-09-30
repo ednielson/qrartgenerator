@@ -49,16 +49,15 @@ export default async function handler(req, res) {
                 })
             });
             const data = await response.json();
-            if (!Response.ok) {
-                console.error(`Replicate API responded with status ${Response.status}`);
+            if (!response.ok) {
+                console.error(`Replicate API responded with status ${response.status}`);
+                return res.status(500).json({ error: `Replicate API responded with status ${response.status}` });
             }
 
-            res.redirect('/dashboard?from=create-qr');
-        
-            res.status(200).json(savedQRCode);
+            return res.redirect('/dashboard?from=create-qr');
         } catch (error) {
             console.error(error);
-            res.status(500).json({ error: error.message });
+            return res.status(500).json({ error: error.message });
         }
     }
 }
