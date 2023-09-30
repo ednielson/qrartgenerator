@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { saveAs } from "file-saver";
 import { useRouter } from 'next/router'; // Import useRouter
 import Footer from "@/components/Footer";
+import Image from "next/image";
 
 export default function Dashboard() {
   const [session, loading] = usePrivate({
@@ -49,7 +50,13 @@ export default function Dashboard() {
         <section className="flex flex-wrap justify-start max-w-full	 mx-auto space-x-3 mt-12">
           {qrs.map((qr, index) => (
             <div className="max-w-xs	card card-compact w-96 bg-base-100 shadow-xl mb-6" key={index}>
-              <figure><img src={qr.output_url} alt="QR Code" /></figure>
+             
+              <Image
+       src={qr.output_url} 
+        alt="QR"
+        width={600}
+        height={600}
+      />
               <div className="card-body">
                 <h2 className="card-title">{qr.style}</h2>
                 <p>{qr.input_url}</p>

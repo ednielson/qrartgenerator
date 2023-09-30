@@ -1,5 +1,5 @@
 import connectMongo from "@/libs/mongoose";
-import User from "@/models/user";
+import User from "@/models/User";
 import QR from "@/models/qr";
 import fetch from 'node-fetch';
 
