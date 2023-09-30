@@ -1,5 +1,6 @@
 import fetch from 'node-fetch';
 import Replicate from "replicate";
+import QRStyle from '@/models/QRStyle';
 
 const replicate = new Replicate({
   auth: process.env.REPLICATE_API_TOKEN,
@@ -25,25 +26,37 @@ async function shortURL(input_url) {
   const responseData = await response.json();
   return responseData.shortURL;
 }
-
 export default async function handler(req, res) {
   try {
     if (req.method !== 'POST') {
       return res.status(405).json({ message: 'Method not allowed' });
     }
 
-    const { input_url, qrId } = req.body;
+    const { input_url, qrId, style } = req.body;
 
     // Get the shortened URL
     const shortUrl = await shortURL(input_url);
     console.log(shortUrl);
+    
+    // Get the style
+    const qrStyle = await QRStyle.findOne({ _id: style });
+
+    // Check if the style exists
+    if (!qrStyle) {
+      return res.status(404).json({ message: 'Style not found' });
+    }
 
     // Call the replicate API
     const output = replicate.predictions.create(
       {
         version: "7653601d0571fa6342ba4fa93a0962adebd1169e9e2329eefeb5729cac645d42",
         input: {
-          qr_code_content: shortUrl
+          qr_code_content: shortUrl,
+          prompt: qrStyle.prompt,
+          strength: qrStyle.strength,
+          controlnet_conditioning_scale: qrStyle.controlnet_conditioning_scale,
+          guidance_scale: qrStyle.guidance_scale,
+          negative_prompt: qrStyle.negative_prompt
         },
         webhook: `https://qrart.ai/api/webhook/replicate?qrId=${qrId}`, // Use qrId here
         webhook_events_filter: ["completed"],
