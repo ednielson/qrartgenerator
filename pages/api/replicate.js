@@ -5,6 +5,27 @@ const replicate = new Replicate({
   auth: process.env.REPLICATE_API_TOKEN,
 });
 
+// Move the shortURL function declaration to the root of the handler function
+async function shortURL(input_url) {
+  const data = {
+    "domain": "l.qrart.ai",
+    "originalURL": input_url
+  };
+
+  const response = await fetch('https://api.short.io/links/public', {
+    method: 'post',
+    headers: {
+      'accept': 'application/json',
+      'Content-Type': 'application/json',
+      'authorization': 'pk_wmXVSwBDKlH0VGcx'
+    },
+    body: JSON.stringify(data)
+  });
+
+  const responseData = await response.json();
+  return responseData.shortURL;
+}
+
 export default async function handler(req, res) {
   try {
     if (req.method !== 'POST') {
@@ -13,27 +34,6 @@ export default async function handler(req, res) {
 
     const { input_url, qrId } = req.body;
 
-    // Call the shortenUrl API
-    async function shortURL(input_url) {
-      const data = {
-        "domain": "l.qrart.ai",
-        "originalURL": input_url
-      };
-    
-      const response = await fetch('https://api.short.io/links/public', {
-        method: 'post',
-        headers: {
-          'accept': 'application/json',
-          'Content-Type': 'application/json',
-          'authorization': 'pk_wmXVSwBDKlH0VGcx'
-        },
-        body: JSON.stringify(data)
-      });
-    
-      const responseData = await response.json();
-      return responseData.shortURL;
-    }
-    
     // Get the shortened URL
     const shortUrl = await shortURL(input_url);
     console.log(shortUrl);
