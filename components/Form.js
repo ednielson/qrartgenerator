@@ -44,7 +44,14 @@ export default function Form() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const styleToUse = selectedStyle ? selectedStyle : styles[0]._id;
-    router.push(`/api/qr?style=${styleToUse}&url=${url}&userId=${session.user.id}`);
+    router.push({
+      pathname: '/api/generateQR',
+      query: {
+        input_url: url,
+        style: styleToUse,
+        creator: session.user.id
+      },
+    });
   };
 
 
@@ -85,5 +92,6 @@ export default function Form() {
     </form>
   );
 }
+
 
 
